@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,3 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/about', function() {
+    return view('about');
+});
+// // Old Format (Upto Laravel 7)
+// Route::get('/contact', 'ContactController@index');
+
+// New Format:
+Route::get('/contact', [ContactController::class, 'index'])->name('con');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
