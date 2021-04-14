@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CategoryController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB; // In case of using query builder import this line
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +30,19 @@ Route::get('/about', function() {
 // New Format:
 Route::get('/contact', [ContactController::class, 'index'])->name('con');
 
+// Dashboard route
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
+    // getting data using Eloquent ORM model
+    $users = User::all();
+
+    // getting data using query builder
+
+    // $users = DB::table('users')->get();
+
+    return view('dashboard', compact('users'));
 })->name('dashboard');
+
+// Categories Route
+Route::get('/dashboard/categories', [categoryController::class, 'index'])->name('categories');
+Route::post('/dashboard/categories/add', [CategoryController::class, 'store'])->name('store.category'); // this name is going on form
+
