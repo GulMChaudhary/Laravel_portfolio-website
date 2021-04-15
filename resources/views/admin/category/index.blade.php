@@ -14,30 +14,49 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        @endif
+            @endif
             <div class="row">
 
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <table class="table">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Category Name</th>
+                            <th scope="col">Created By</th>
+                            <th scope="col">Created At</th>
+                            <th scope="col">Last Updated</th>
                             <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Category Name</td>
-                                <td><button class="btn btn-warning btn-sm">Update</button> <button class="btn btn-danger btn-sm">Delete</button></td>
-                              </tr>
-                            <tr><td colspan="4"><strong>Total Categories: XX</strong></td></tr>
+                            {{-- @php ($serialNo = 1) --}}
+                            {{--    Above serial no will not be continuously updated with pagination so
+                                    we are using firstItem() method.
+                                --}}
+
+                            @foreach ($categories as $cat)
+                                <tr>
+                                    {{-- <th scope="row">{{ $serialNo++ }}</th> --}}
+                                    <th scope="row">{{ $categories->firstItem()+$loop->index }}</th>
+                                    <td>{{ $cat->category_name }}</td>
+                                    <td>{{ $cat->user_id }}</td>
+                                    <td>{{ $cat->created_at->diffForHumans() }}</td>
+                                    <td>@if ( $cat->updated_at == NULL )
+                                            <span class="text-danger">Not updated</span>
+                                        @else
+                                            {{ $cat->updated_at->diffForHumans() }}
+                                        @endif
+                                    </td>
+                                    <td><button class="btn btn-warning btn-sm">Update</button> <button class="btn btn-danger btn-sm">Delete</button></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
+                    {{ $categories->links() }}
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="card-header">
                         <form action="{{ route('store.category') }}" method="POST">
                         @csrf
@@ -54,7 +73,6 @@
                 </div>
 
             </div>
-
         </div>
     </div>
 </x-app-layout>
