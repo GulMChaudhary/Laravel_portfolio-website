@@ -40,7 +40,7 @@
                                     {{-- <th scope="row">{{ $serialNo++ }}</th> --}}
                                     <th scope="row">{{ $categories->firstItem()+$loop->index }}</th>
                                     <td>{{ $cat->category_name }}</td>
-                                    <td>{{ $cat->user_id }}</td>
+                                    <td>{{ $cat->user->name }}</td>
                                     <td>{{ $cat->created_at->diffForHumans() }}</td>
                                     <td>@if ( $cat->updated_at == NULL )
                                             <span class="text-danger">Not updated</span>

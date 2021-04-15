@@ -12,20 +12,38 @@ class CategoryController extends Controller
 {
     public function index ()
     {
-        // Getting latest data with ORM Model - Getting all data
-        //$categories = Category::latest()->get();
+       /* Getting latest data with ORM Model - Getting all data
 
-        // Pagination
+       $categories = Category::latest()->get();
+
+        Pagination
+
+        */
 
         $categories = Category::latest()->paginate(5);
 
-        // Getting latest data with Querybuilder
+        /*
+        ------------------- QueryBuilder Examples -------------------
+        1. Getting latest data with Querybuilder
 
-        // $categories = DB::table('categories')->latest()->get();
+            $categories = DB::table('categories')->latest()->get();
 
-        // If we want to use Pagination
+        2. If we want to use Pagination
 
-        // $categories = DB::table('categories')->latest()->paginate(5);
+            $categories = DB::table('categories')->latest()->paginate(5);
+
+       REMEMBER: diffForHumans() method will not work with QueryBuilder
+
+       3. Joining / initiating relationship with User and Category table
+
+            $categories = DB::table('categories')
+                            ->join('users', 'categories.user_id', 'users.id')
+                            ->select('categories.*', 'users.name')
+                            ->latest()
+                            ->paginate(5);
+
+        */
+
 
 
         return view('admin.category.index', compact('categories'));

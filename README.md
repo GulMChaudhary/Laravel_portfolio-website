@@ -10,7 +10,8 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - PHP 8.* 
 - MySQL / MariaDB
 
-## Features
+## Features:
+
 - HTML5/Bootstrap Responsive Template
 - Multi Auth with Laravel Jetstream, Fortify and LiveWire
 - Manager Users
@@ -19,6 +20,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - PHP Carbon API extension for DateTime
 
 ## More Information On:
+
 - [Laravel](https://laravel.com/). 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
 - [Jetstream ](https://jetstream.laravel.com/2.x/introduction.html). 
@@ -30,4 +32,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Robust background job processing](https://laravel.com/docs/queues).
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 - [Carbon API Extension](https://carbon.nesbot.com/)
+
+## Project Images:
+
 
