@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Models\Brand;
 use App\Models\User;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
@@ -57,6 +58,8 @@ Route::get('/categories/emptytrash/{id}', [CategoryController::class, 'delete'])
 
 Route::get('dashboard/brands',[BrandController::class, 'index'])->name('brands');
 Route::post('/dashboard/brands/add', [BrandController::class, 'store'])->name('store.brand');
+Route::get('/dashboard/brands/edit/{id}', [BrandController::class, 'edit'])->name('edit.brand');
+Route::post('/dashboard/brands/update/{id}', [BrandController::class, 'update'])->name('update.brand');
 
 
 //----------------------------------------------------------------------------------//

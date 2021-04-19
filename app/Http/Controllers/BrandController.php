@@ -46,9 +46,9 @@ class BrandController extends Controller
         $brand_image = $request->file('brand_image');
         $name_gen = hexdec(uniqid());
         $img_ext = strtolower($brand_image->getClientOriginalExtension());
-        $image_name = $name_gen.'.'.$img_ext;
+        $image_name = $name_gen . '.' . $img_ext;
         $upload_location = 'images/brand/';
-        $last_image = $upload_location.$image_name;
+        $last_image = $upload_location . $image_name;
         $brand_image->move($upload_location, $image_name);
 
         Brand::insert([
@@ -60,7 +60,6 @@ class BrandController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Brand added successfully.');
-
     }
 
     /**
@@ -82,7 +81,8 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        //
+        $brands = Brand::find($id);
+        return view('admin.brand.edit', compact('brands'));
     }
 
     /**
@@ -94,17 +94,41 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'brand_name' => 'max:50',
+            'brand_image' => 'mimes:jpeg,gif,jpeg,png'
+        ]);
+
+        $old_image = $request->old_image;
+
+        $brand_image = $request->file('brand_image');
+
+        if ($brand_image) {
+            $name_gen = hexdec(uniqid());
+            $img_ext = strtolower($brand_image->getClientOriginalExtension());
+            $image_name = $name_gen . '.' . $img_ext;
+            $upload_location = 'images/brand/';
+            $last_image = $upload_location . $image_name;
+            $brand_image->move($upload_location, $image_name);
+
+            unlink($old_image);
+
+            Brand::find($id)->update([
+                'brand_name' => $request->brand_name,
+                'brand_image' => $last_image,
+                'user_id' => Auth::user()->id,
+                'updated_at' => Carbon::now()
+            ]);
+
+            return redirect()->back()->with('success', 'Brand data updated successfully.');
+        } else {
+            Brand::find($id)->update([
+            'brand_name' => $request->brand_name,
+            'user_id' => Auth::user()->id,
+            'updated_at' => Carbon::now()
+        ]);
+            return redirect()->back()->with('success', 'Brand data updated successfully.');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

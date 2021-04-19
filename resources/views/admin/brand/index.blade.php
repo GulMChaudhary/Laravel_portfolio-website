@@ -48,7 +48,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ url('dashboard/brands/delete/' . $brand->id) }}"
-                                            class="btn btn-danger btn-sm">Trash</a>
+                                            class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
