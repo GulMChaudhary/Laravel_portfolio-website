@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Models\User;
+use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // In case of using query builder import this line
 
@@ -41,12 +43,20 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     return view('dashboard', compact('users'));
 })->name('dashboard');
-
+//----------------------------------------------------------------------------------//
 // Categories Route
-Route::get('/dashboard/categories', [categoryController::class, 'index'])->name('categories');
+Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('categories');
 Route::post('/dashboard/categories/add', [CategoryController::class, 'store'])->name('store.category'); // this name is going on form
 Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name('edit.category');
 Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name('update.category');
 Route::get('/categories/softdelete/{id}', [CategoryController::class, 'softDelete']);
 Route::get('/categories/restore/{id}', [CategoryController::class, 'restore']);
-Route::get('categories/emptytrash/{id}', [CategoryController::class, 'delete']);
+Route::get('/categories/emptytrash/{id}', [CategoryController::class, 'delete']);
+//----------------------------------------------------------------------------------//
+// Brands Route
+
+Route::get('dashboard/brands',[BrandController::class, 'index'])->name('brands');
+Route::post('/dashboard/brands/add', [BrandController::class, 'store'])->name('store.brand');
+
+
+//----------------------------------------------------------------------------------//
