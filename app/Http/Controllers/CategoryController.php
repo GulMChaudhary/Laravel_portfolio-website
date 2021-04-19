@@ -7,6 +7,7 @@ use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -21,6 +22,7 @@ class CategoryController extends Controller
         */
 
         $categories = Category::latest()->paginate(5);
+        $trashCategories = Category::onlyTrashed()->latest()->paginate(3);
 
         /*
         ------------------- QueryBuilder Examples -------------------
@@ -46,7 +48,7 @@ class CategoryController extends Controller
 
 
 
-        return view('admin.category.index', compact('categories'));
+        return view('admin.category.index', compact('categories', 'trashCategories'));
     }
 
     public function store (Request $request)
@@ -75,5 +77,39 @@ class CategoryController extends Controller
         $category->save();
 
         return Redirect()->back()->with('success', 'New Category Added.');
+    }
+
+    public function edit ($id)
+    {
+        $categories = Category::find($id);
+        return view('admin.category.edit', compact('categories'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $updateData = Category::find($id)->update([
+            'category_name' => $request->category_name,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return Redirect()->route('categories')->with('success', 'Category Updated');
+    }
+
+    public function softDelete($id)
+    {
+        $delete = Category::find($id)->delete();
+        return redirect()->back()->with('success', 'Category moved into trashed');
+    }
+
+    public function restore($id)
+    {
+        $delete = Category::withTrashed()->find($id)->restore();
+        return redirect()->back()->with('success', 'Trashed category restored.');
+    }
+
+    public function delete($id)
+    {
+        $delete = Category::onlyTrashed()->find($id)->forceDelete();
+        return redirect()->back()->with('success', 'Category Parmanently Deleted.');
     }
 }

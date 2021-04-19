@@ -45,4 +45,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 // Categories Route
 Route::get('/dashboard/categories', [categoryController::class, 'index'])->name('categories');
 Route::post('/dashboard/categories/add', [CategoryController::class, 'store'])->name('store.category'); // this name is going on form
-
+Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name('edit.category');
+Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->name('update.category');
+Route::get('/categories/softdelete/{id}', [CategoryController::class, 'softDelete']);
+Route::get('/categories/restore/{id}', [CategoryController::class, 'restore']);
+Route::get('categories/emptytrash/{id}', [CategoryController::class, 'delete']);
