@@ -60,6 +60,6 @@ Route::get('dashboard/brands',[BrandController::class, 'index'])->name('brands')
 Route::post('/dashboard/brands/add', [BrandController::class, 'store'])->name('store.brand');
 Route::get('/dashboard/brands/edit/{id}', [BrandController::class, 'edit'])->name('edit.brand');
 Route::post('/dashboard/brands/update/{id}', [BrandController::class, 'update'])->name('update.brand');
-
+Route::get('/dashboard/brands/delete/{id}', [BrandController::class, 'destroy'])->name('destroy.brand');
 
 //----------------------------------------------------------------------------------//
