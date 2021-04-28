@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Models\Brand;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+//use Intervention\Image\ImageManagerStatic as Image;
 
 class BrandController extends Controller
 {
@@ -14,7 +15,6 @@ class BrandController extends Controller
         $brands = Brand::latest()->paginate(5);
         return view('admin.brand.index', compact('brands'));
     }
-
 
     public function store(Request $request)
     {
@@ -41,18 +41,11 @@ class BrandController extends Controller
 
         return redirect()->back()->with('success', 'Brand added successfully.');
     }
-
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $brands = Brand::find($id);
         return view('admin.brand.edit', compact('brands'));
     }
-
 
     public function update(Request $request, $id)
     {

@@ -19,6 +19,13 @@ use Illuminate\Support\Facades\DB; // In case of using query builder import this
 | contains the "web" middleware group. Now create something great!
 |
 */
+//|--------------------------------------------------------------------------
+// For The Email Verification Notice
+//|--------------------------------------------------------------------------
+Route::get('/email/verify', function() {
+    return view('auth.verify-email');
+    })->middleware(['auth'])->name('verification.notice');
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -63,3 +70,5 @@ Route::post('/dashboard/brands/update/{id}', [BrandController::class, 'update'])
 Route::get('/dashboard/brands/delete/{id}', [BrandController::class, 'destroy'])->name('destroy.brand');
 
 //----------------------------------------------------------------------------------//
+
+

@@ -14,10 +14,10 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 - HTML5/Bootstrap Responsive Template
 - Multi Auth with Laravel Jetstream, Fortify and LiveWire
-- Manager Users
-- Manage Portfolio Categories
+- Content Management System
 - ORM as well as QueryBuilder Relationships
 - PHP Carbon API extension for DateTime
+- Laravel Image Intervention Package
 
 ## More Information On:
 
@@ -32,6 +32,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Robust background job processing](https://laravel.com/docs/queues).
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 - [Carbon API Extension](https://carbon.nesbot.com/)
+- [Intervention Image](http://image.intervention.io/)
 
 ## Project Images:
 
