@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index ()
     {
        /* Getting latest data with ORM Model - Getting all data

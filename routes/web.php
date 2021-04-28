@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\DB; // In case of using query builder import this
 Route::get('/email/verify', function() {
     return view('auth.verify-email');
     })->middleware(['auth'])->name('verification.notice');
-
+//----------------------------------------------------------------------------------//
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,7 +39,7 @@ Route::get('/about', function() {
 
 // New Format:
 Route::get('/contact', [ContactController::class, 'index'])->name('con');
-
+//----------------------------------------------------------------------------------//
 // Dashboard route
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // getting data using Eloquent ORM model
