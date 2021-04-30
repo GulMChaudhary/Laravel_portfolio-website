@@ -3,6 +3,7 @@
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminController;
 use App\Models\Brand;
 use App\Models\User;
 use Illuminate\Routing\Route as RoutingRoute;
@@ -43,14 +44,19 @@ Route::get('/contact', [ContactController::class, 'index'])->name('con');
 // Dashboard route
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // getting data using Eloquent ORM model
-    $users = User::all();
+    //$users = User::all();
 
     // getting data using query builder
 
     // $users = DB::table('users')->get();
 
-    return view('dashboard', compact('users'));
+    return view('admin.index');
 })->name('dashboard');
+
+Route::get('/user/logout', [AdminController::class, 'Logout'])->name('user.logout');
+//Route::get('/user/logout', ['AdminController::class'])->name('user.logout');
+
+
 //----------------------------------------------------------------------------------//
 // Categories Route
 Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('categories');
