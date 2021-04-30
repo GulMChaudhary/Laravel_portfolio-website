@@ -54,11 +54,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('/user/logout', [AdminController::class, 'Logout'])->name('user.logout');
-//Route::get('/user/logout', ['AdminController::class'])->name('user.logout');
 
 
 //----------------------------------------------------------------------------------//
+
 // Categories Route
+
 Route::get('/dashboard/categories', [CategoryController::class, 'index'])->name('categories');
 Route::post('/dashboard/categories/add', [CategoryController::class, 'store'])->name('store.category'); // this name is going on form
 Route::get('/categories/edit/{id}', [CategoryController::class, 'edit'])->name('edit.category');
@@ -66,7 +67,9 @@ Route::post('/categories/update/{id}', [CategoryController::class, 'update'])->n
 Route::get('/categories/softdelete/{id}', [CategoryController::class, 'softDelete']);
 Route::get('/categories/restore/{id}', [CategoryController::class, 'restore']);
 Route::get('/categories/emptytrash/{id}', [CategoryController::class, 'delete']);
+
 //----------------------------------------------------------------------------------//
+
 // Brands Route
 
 Route::get('dashboard/brands',[BrandController::class, 'index'])->name('brands');
