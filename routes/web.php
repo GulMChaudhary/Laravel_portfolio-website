@@ -29,7 +29,8 @@ Route::get('/email/verify', function() {
 //----------------------------------------------------------------------------------//
 
 Route::get('/', function () {
-    return view('welcome');
+    $brands = DB::table('brands')->get();
+    return view('index', compact('brands'));
 });
 
 Route::get('/about', function() {

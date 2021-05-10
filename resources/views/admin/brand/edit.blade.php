@@ -1,9 +1,6 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Brands') }}
-        </h2>
-    </x-slot>
+@extends('admin.admin_master')
+
+@section('admin_content')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -18,13 +15,13 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="card-header">
-                        <div class="card-body"></div>
+                        <div class="card-body">
                         <form action="{{ url('dashboard/brands/update/' . $brands->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="old_image" value="{{ $brands->brand_image }}">
                             <div class="form-group">
                                 <label for="brand_name">
-                                    <h2 class="font-semibold text-xl text-gray-800 leading-tight">Upate Brand</h2>
+                                    <h4 class="font-semibold text-xl text-gray-800 leading-tight">Upate Brand</h4>
                                 </label>
                                 <input type="text" class="form-control" name="brand_name" id="brand_name"
                                     aria-describedby="brand_name" value="{{ $brands->brand_name }}">
@@ -45,8 +42,9 @@
                             <button type="submit" class="btn btn-warning btn-sm">Update Brand</button>
                         </form>
                     </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+@endsection

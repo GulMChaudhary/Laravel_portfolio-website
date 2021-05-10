@@ -80,7 +80,6 @@
 
 
   <script src="{{ asset('backend/assets/plugins/nprogress/nprogress.js') }}"></script>
-</head>
 
 </head>
   <body class="bg-light-gray" id="body">
