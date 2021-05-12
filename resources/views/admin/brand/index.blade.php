@@ -54,14 +54,12 @@
                 </div>
 
                 <div class="col-md-3">
-                    <div class="card-header">
+                    <div class="card">
+                    <div class="card-header"><h4 class="text-dark"> Add New Brand</h4></div>
                         <div class="card-body">
                             <form action="{{ route('store.brand') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="brand">
-                                        <h2 class="font-semibold text-xl text-gray-800 leading-tight">Add New Brand</h2>
-                                    </label>
                                     <input type="text" class="form-control" name="brand_name" id="brand_name"
                                         aria-describedby="brand" placeholder="Brand Name">
                                     @error('brand_name')
@@ -75,7 +73,7 @@
                                         <span class="text-danger">{{ $message }} </span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-sm">Add Brand</button>
+                                <button type="submit" class="btn btn-outline-primary">Add Brand</button>
                             </form>
                         </div>
                     </div>

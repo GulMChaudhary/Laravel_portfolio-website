@@ -38,18 +38,23 @@
                 data-parent="#sidebar-menu">
                 <div class="sub-menu">
                       <li  class="active" >
-                        <a class="sidenav-item-link" href="{{ route('brands') }}">
+                        <a class="sidenav-item-link" href="{{ route('home.slider') }}">
                           <span class="nav-text">About</span>
                         </a>
                       </li>
                       <li >
-                        <a class="sidenav-item-link" href="analytics.html">
+                        <a class="sidenav-item-link" href="{{ route('home.slider') }}">
                           <span class="nav-text">Slider</span>
                         </a>
                       </li>
                       <li >
                         <a class="sidenav-item-link" href="analytics.html">
                           <span class="nav-text">Portfolio</span>
+                        </a>
+                      </li>
+                      <li >
+                        <a class="sidenav-item-link" href="{{ route('brands') }}">
+                          <span class="nav-text">Clients</span>
                         </a>
                       </li>
                       <li >

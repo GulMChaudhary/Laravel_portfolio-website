@@ -4,8 +4,12 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SliderController;
+
 use App\Models\Brand;
+use App\Models\Slider;
 use App\Models\User;
+
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB; // In case of using query builder import this line
@@ -30,7 +34,7 @@ Route::get('/email/verify', function() {
 
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
-    return view('index', compact('brands'));
+    return view('home', compact('brands'));
 });
 
 Route::get('/about', function() {
@@ -73,7 +77,7 @@ Route::get('/categories/emptytrash/{id}', [CategoryController::class, 'delete'])
 
 // Brands Route
 
-Route::get('dashboard/brands',[BrandController::class, 'index'])->name('brands');
+Route::get('/dashboard/brands',[BrandController::class, 'index'])->name('brands');
 Route::post('/dashboard/brands/add', [BrandController::class, 'store'])->name('store.brand');
 Route::get('/dashboard/brands/edit/{id}', [BrandController::class, 'edit'])->name('edit.brand');
 Route::post('/dashboard/brands/update/{id}', [BrandController::class, 'update'])->name('update.brand');
@@ -81,4 +85,12 @@ Route::get('/dashboard/brands/delete/{id}', [BrandController::class, 'destroy'])
 
 //----------------------------------------------------------------------------------//
 
+// Slider Route
+
+Route::get('/dashboard/slider', [SliderController::class, 'index'])->name('home.slider');
+Route::get('/dashboard/slider/create', [SliderController::class, 'create'])->name('create.slider');
+Route::post('/dashboard/slider/store', [SliderController::class, 'store'])->name('store.slider');
+Route::get('users/{id}', function ($id) {
+
+});
 
