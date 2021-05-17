@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Skills;
 use Illuminate\Http\Request;
 
 class SkillsController extends Controller
@@ -13,25 +14,10 @@ class SkillsController extends Controller
      */
     public function index()
     {
-        //
+        $skills = Skills::latest()->paginate(8);
+        return view('admin.skills.index', compact('skills'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //

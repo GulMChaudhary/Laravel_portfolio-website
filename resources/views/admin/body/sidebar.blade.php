@@ -48,18 +48,23 @@
                         </a>
                       </li>
                       <li >
+                        <a class="sidenav-item-link" href="{{ route('services') }}">
+                          <span class="nav-text">Services</span>
+                        </a>
+                      </li>
+                      <li >
                         <a class="sidenav-item-link" href="#">
                           <span class="nav-text">Portfolio</span>
                         </a>
                       </li>
                       <li >
-                        <a class="sidenav-item-link" href="{{ route('brands') }}">
-                          <span class="nav-text">Clients</span>
+                        <a class="sidenav-item-link" href="{{ route('skills') }}">
+                          <span class="nav-text">Skills</span>
                         </a>
                       </li>
                       <li >
                         <a class="sidenav-item-link" href="{{ route('brands') }}">
-                          <span class="nav-text">Brands</span>
+                          <span class="nav-text">Clients</span>
                         </a>
                       </li>
                 </div>

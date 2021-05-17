@@ -5,12 +5,15 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\SliderController;
 
 use App\Models\Brand;
 use App\Models\Slider;
 use App\Models\User;
 use App\Models\Skills;
+use App\Models\Service;
 
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
@@ -78,7 +81,7 @@ Route::get('/categories/emptytrash/{id}', [CategoryController::class, 'delete'])
 
 //----------------------------------------------------------------------------------//
 
-// Brands Route
+// Brands/clients Route
 
 Route::get('/dashboard/brands',[BrandController::class, 'index'])->name('brands');
 Route::post('/dashboard/brands/add', [BrandController::class, 'store'])->name('store.brand');
@@ -108,7 +111,21 @@ Route::get('/dashboard/home-about/delete/{id}', [AboutSection::class, 'destroy']
 
 //----------------------------------------------------------------------------------//
 
+// Services Section Route
+Route::get('/dashboard/services', [ServicesController::class, 'index'])->name('services');
+Route::post('/dashboard/services/add', [ServicesController::class, 'store'])->name('services.store');
+Route::get('/dashboard/services/edit/{id}', [ServicesController::class, 'edit'])->name('services.edit');
+Route::post('/dashboard/services/update/{id}', [ServicesController::class, 'update'])->name('services.update');
+
+//----------------------------------------------------------------------------------//
+
+// Skills Section Route
+Route::get('/dashboard/skills', [SkillsController::class, 'index'])->name('skills');
+
+//----------------------------------------------------------------------------------//
+
 // Portfolio Section Route
+
 
 
 //----------------------------------------------------------------------------------//
