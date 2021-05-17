@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutSection;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\SliderController;
 use App\Models\Brand;
 use App\Models\Slider;
 use App\Models\User;
+use App\Models\Skills;
 
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
@@ -34,7 +36,8 @@ Route::get('/email/verify', function() {
 
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
-    return view('home', compact('brands'));
+    $about_section = DB::table('home_abouts')->first();
+    return view('home', compact('brands', 'about_section'));
 });
 
 Route::get('/about', function() {
@@ -93,4 +96,22 @@ Route::post('/dashboard/slider/store', [SliderController::class, 'store'])->name
 Route::get('users/{id}', function ($id) {
 
 });
+//----------------------------------------------------------------------------------//
+
+// About Section Route
+Route::get('/dashboard/home-about', [AboutSection::class, 'index'])->name('home.about');
+Route::get('/dashboard/home-about/create', [AboutSection::class, 'create'])->name('home.about_create');
+Route::post('/dashboard/home-about/store', [AboutSection::class, 'store'])->name('home.about_store');
+Route::get('/dashboard/home-about/edit/{id}', [AboutSection::class, 'edit'])->name('home.about_edit');
+Route::post('/dashboard/home-about/update/{id}', [AboutSection::class, 'update'])->name('home.about_update');
+Route::get('/dashboard/home-about/delete/{id}', [AboutSection::class, 'destroy'])->name('home.about_destroy');
+
+//----------------------------------------------------------------------------------//
+
+// Portfolio Section Route
+
+
+//----------------------------------------------------------------------------------//
+
+// Contact Section Route
 
