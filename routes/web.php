@@ -116,6 +116,7 @@ Route::get('/dashboard/services', [ServicesController::class, 'index'])->name('s
 Route::post('/dashboard/services/add', [ServicesController::class, 'store'])->name('services.store');
 Route::get('/dashboard/services/edit/{id}', [ServicesController::class, 'edit'])->name('services.edit');
 Route::post('/dashboard/services/update/{id}', [ServicesController::class, 'update'])->name('services.update');
+Route::get('/dashboard/services/delete/{id}', [ServicesController::class, 'destroy'])->name('services.destroy');
 
 //----------------------------------------------------------------------------------//
 

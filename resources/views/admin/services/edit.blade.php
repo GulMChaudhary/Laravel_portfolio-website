@@ -44,7 +44,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="icon">
-                                    <strong>Update icon Image</strong>
+                                    <strong>Update Icon Image</strong>
                                 </label>
                                 <input type="file" class="form-control" name="brand_image" id="brand_image"
                                     aria-describedby="brand_image" value="{{ $services->icon }}">

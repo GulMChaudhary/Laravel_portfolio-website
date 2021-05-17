@@ -51,4 +51,27 @@ class ServicesController extends Controller
         return view('admin.services.edit', compact('services'));
     }
 
+    public function update(Request $request, $id)
+    {
+
+        $validatedData = $request->validate([
+            'title' => 'required|max:150|unique:services',
+            'description' => 'required|max:200',
+            'icon' => 'required|mimes:jpeg,gif,jpeg,png',
+        ]);
+
+    }
+
+
+    public function destroy ($id)
+    {
+        $image = Service::find($id);
+        $old_image = $image->icon;
+        unlink($old_image);
+
+        Service::find($id)->delete();
+        return redirect()->back()->with('success', 'Service Deleted.');
+
+    }
+
 }
