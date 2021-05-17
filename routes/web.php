@@ -5,6 +5,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\SliderController;
@@ -14,6 +15,7 @@ use App\Models\Slider;
 use App\Models\User;
 use App\Models\Skills;
 use App\Models\Service;
+
 
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
@@ -121,13 +123,14 @@ Route::get('/dashboard/services/delete/{id}', [ServicesController::class, 'destr
 //----------------------------------------------------------------------------------//
 
 // Skills Section Route
+
 Route::get('/dashboard/skills', [SkillsController::class, 'index'])->name('skills');
 
 //----------------------------------------------------------------------------------//
 
 // Portfolio Section Route
 
-
+Route::get('/dashboard/portfolio', [PortfolioController::class, 'index'])->name('portfolio');
 
 //----------------------------------------------------------------------------------//
 

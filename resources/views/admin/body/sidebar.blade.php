@@ -53,7 +53,7 @@
                         </a>
                       </li>
                       <li >
-                        <a class="sidenav-item-link" href="#">
+                        <a class="sidenav-item-link" href="{{ route('portfolio') }}">
                           <span class="nav-text">Portfolio</span>
                         </a>
                       </li>
@@ -64,7 +64,7 @@
                       </li>
                       <li >
                         <a class="sidenav-item-link" href="{{ route('brands') }}">
-                          <span class="nav-text">Clients</span>
+                          <span class="nav-text">Clients / Brands</span>
                         </a>
                       </li>
                 </div>
