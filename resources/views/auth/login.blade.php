@@ -101,40 +101,47 @@
                 </a>
               </div>
             </div>
+            @if (session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{ session('success') }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
             <div class="card-body p-5">
-
-              <h4 class="text-dark mb-5">Sign in to your account</h4>
-              <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <div class="row">
-                  <div class="form-group col-md-12 mb-4">
-                    <input type="email" class="form-control input-lg" aria-describedby="emailHelp" name="email" placeholder="Email" value="{{ __('Email') }}" required>
-                  </div>
-                  <div class="form-group col-md-12 ">
-                    <input type="password" class="form-control input-lg" name="password" placeholder="Password" required>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="d-flex my-2 justify-content-between">
-                      <div class="d-inline-block mr-3">
-                        <label class="control control-checkbox">{{ __('Remember me') }}
-                          <input type="checkbox" />
-                          <div class="control-indicator"></div>
-                        </label>
-
-                      </div>
-                      <p>
-                        @if (Route::has('password.request'))
-                            <a class="text-blue" href="{{ route('password.request') }}">{{ ('Forgot your password?') }}</a>
-                        @endif
-                      </p>
+                <h4 class="text-dark mb-5">Sign in to your account</h4>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
+                    <div class="row">
+                    <div class="form-group col-md-12 mb-4">
+                        <input type="email" class="form-control input-lg" aria-describedby="emailHelp" name="email" placeholder="Email" value="{{ __('Email') }}" required>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary btn-block mb-4"> {{ __('Log in') }}</button>
-                    <p>Don't have an account yet ?
-                      <a class="text-blue" href="/register">Sign Up</a>
-                    </p>
-                  </div>
-                </div>
-              </form>
+                    <div class="form-group col-md-12 ">
+                        <input type="password" class="form-control input-lg" name="password" placeholder="Password" required>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="d-flex my-2 justify-content-between">
+                        <div class="d-inline-block mr-3">
+                            <label class="control control-checkbox">{{ __('Remember me') }}
+                            <input type="checkbox" />
+                            <div class="control-indicator"></div>
+                            </label>
+
+                        </div>
+                        <p>
+                            @if (Route::has('password.request'))
+                                <a class="text-blue" href="{{ route('password.request') }}">{{ ('Forgot your password?') }}</a>
+                            @endif
+                        </p>
+                        </div>
+                        <button type="submit" class="btn btn-lg btn-primary btn-block mb-4"> {{ __('Log in') }}</button>
+                        <p>Don't have an account yet ?
+                        <a class="text-blue" href="/register">Sign Up</a>
+                        </p>
+                    </div>
+                    </div>
+                </form>
             </div>
           </div>
         </div>

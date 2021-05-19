@@ -9,6 +9,7 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\UserProfileController;
 
 use App\Models\Brand;
 use App\Models\Slider;
@@ -39,24 +40,24 @@ Route::get('/email/verify', function() {
     return view('auth.verify-email');
     })->middleware(['auth'])->name('verification.notice');
 //----------------------------------------------------------------------------------//
-
+// To display content on home page
 Route::get('/', function () {
     $brands = DB::table('brands')->get();
     $about_section = DB::table('home_abouts')->first();
     return view('home', compact('brands', 'about_section'));
 });
+// //----------------------------------------------------------------------------------//
+// Route::get('/about', function() {
+//     return view('about');
+// });
 //----------------------------------------------------------------------------------//
-Route::get('/about', function() {
-    return view('about');
-});
-//----------------------------------------------------------------------------------//
-// Form data on front page
+// Contact Form data on front page
 
 Route::get('/contact', function() {
     $contact = DB::table('contacts')->first();
     return view('contact', compact('contact'));
 });
-
+// Backend
 Route::post('/contact/form', [ContactController::class, 'contactForm'])->name('contact.form');
 Route::get('/dashboard/messages', [ContactController::class, 'displayMessages'])->name('messages');
 Route::get('/dashboard/messages/delete/{id}', [ContactController::class, 'destroyMessages'])->name('destroyMessages');
@@ -75,7 +76,7 @@ Route::post('/dashboard/contact/update/{id}', [ContactController::class, 'update
 Route::get('/dashboard/contact/delete/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
 
 //----------------------------------------------------------------------------------//
-// Dashboard route
+// Dashboard and User Profile route
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     // getting data using Eloquent ORM model
     //$users = User::all();
@@ -86,6 +87,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
     return view('admin.index');
 })->name('dashboard');
+
+Route::get('/dashboard/user/password', [UserProfileController::class, 'changePassword'])->name('change.password');
+Route::post('/dashboard/user/update/password', [UserProfileController::class, 'updatePassword'])->name('password.update');
 
 Route::get('/user/logout', [AdminController::class, 'Logout'])->name('user.logout');
 
