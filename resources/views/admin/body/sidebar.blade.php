@@ -70,8 +70,13 @@
                         </a>
                       </li>
                       <li >
-                        <a class="sidenav-item-link" href="{{ route('brands') }}">
+                        <a class="sidenav-item-link" href="{{ route('contact') }}">
                           <span class="nav-text">Contact</span>
+                        </a>
+                      </li>
+                      <li >
+                        <a class="sidenav-item-link" href="{{ route('messages') }}">
+                          <span class="nav-text">Messages</span>
                         </a>
                       </li>
                 </div>

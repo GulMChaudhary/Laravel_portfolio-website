@@ -236,7 +236,7 @@
   </section><!-- End Portfolio Section -->
 
   <!-- ======= Our Skills Section ======= -->
-  <section id="clients" class="clients">
+  <section id="skills" class="clients">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">

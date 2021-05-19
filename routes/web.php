@@ -15,6 +15,7 @@ use App\Models\Slider;
 use App\Models\User;
 use App\Models\Skills;
 use App\Models\Service;
+use App\Models\Contact;
 
 
 use Illuminate\Routing\Route as RoutingRoute;
@@ -44,15 +45,35 @@ Route::get('/', function () {
     $about_section = DB::table('home_abouts')->first();
     return view('home', compact('brands', 'about_section'));
 });
-
+//----------------------------------------------------------------------------------//
 Route::get('/about', function() {
     return view('about');
 });
+//----------------------------------------------------------------------------------//
+// Form data on front page
+
+Route::get('/contact', function() {
+    $contact = DB::table('contacts')->first();
+    return view('contact', compact('contact'));
+});
+
+Route::post('/contact/form', [ContactController::class, 'contactForm'])->name('contact.form');
+Route::get('/dashboard/messages', [ContactController::class, 'displayMessages'])->name('messages');
+Route::get('/dashboard/messages/delete/{id}', [ContactController::class, 'destroyMessages'])->name('destroyMessages');
+
+//----------------------------------------------------------------------------------//
+// Manage contact information in backend
 // // Old Format (Upto Laravel 7)
 // Route::get('/contact', 'ContactController@index');
 
 // New Format:
-Route::get('/contact', [ContactController::class, 'index'])->name('con');
+Route::get('/dashboard/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/dashboard/contact/create', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/dashboard/contact/store', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/dashboard/contact/edit/{id}', [ContactController::class, 'edit'])->name('contact.edit');
+Route::post('/dashboard/contact/update/{id}', [ContactController::class, 'update'])->name('contact.update');
+Route::get('/dashboard/contact/delete/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+
 //----------------------------------------------------------------------------------//
 // Dashboard route
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

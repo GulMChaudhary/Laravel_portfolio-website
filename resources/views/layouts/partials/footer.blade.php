@@ -1,60 +1,12 @@
 <!-- ======= Footer ======= -->
+
 <footer id="footer">
-
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Company</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About Me</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Portfolio</a></li>
-
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>What</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Data Analysis</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Data Visualization</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Data Science</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Financial Analysis</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Join Our Newsletter</h4>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </div>
 
     <div class="container d-md-flex py-4">
 
       <div class="mr-md-auto text-center text-md-left">
         <div class="copyright">
           &copy; Copyright <strong><span>Hammad Hassan</span></strong>. All Rights Reserved.
-          <br>
-          <a href="#">Terms of service</a> | <a href="#">Privacy policy</a>
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
